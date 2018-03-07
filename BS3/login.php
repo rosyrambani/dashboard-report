@@ -22,14 +22,14 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
       <div class="card-body">
-        <form>
+        <form method="POST" action="">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <label for="username">User Name</label>
+            <input class="form-control" id="username" name="username" type="text" placeholder="Enter Your User Name">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
+            <label for="password">Password</label>
+            <input class="form-control" id="password" name="password" type="password" placeholder="Enter Your Password">
           </div>
           <div class="form-group">
             <div class="form-check">
@@ -37,8 +37,45 @@
                 <input class="form-check-input" type="checkbox"> Remember Password</label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="homepage.html">Login</a>
+          <input type="submit" name="submit" value="LOGIN" class="btn btn-primary btn-block"/>
+          <!-- <a class="btn btn-primary btn-block" href="homepage.html">Login</a> -->
         </form>
+        <?php
+
+        $host="localhost";
+        $user="root";
+        $password="";
+        $db="demo";
+
+        $con= mysqli_connect($host,$user,$password);
+        //check connection
+
+        if (mysqli_connect_errno())
+        {
+          echo "Failed to connect to MySql:" .mysqli_connect_errno();
+        }
+
+        mysqli_select_db($con,"demo");
+
+        if(isset($_POST['username'])){
+          $uname=$_POST['username'];
+          $password=$_POST['password'];
+
+          $sql="select * from loginform where user='".$uname."'AND Pass='".$password."' limit 1";
+
+          $result=mysqli_query($con,$sql);
+
+          if(mysqli_num_rows($result)==1){
+            echo " You Have Successfully Logged in";
+            exit();
+          }
+          else{
+            echo "You Have Entered Incorrect Password";
+            exit();
+          }
+        }
+
+        ?>
         <!-- <div class="text-center">
           <a class="d-block small mt-3" href="register.html">Register an Account</a>
           <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
