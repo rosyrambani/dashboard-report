@@ -59,7 +59,7 @@ if(!isset($_SESSION["sess_user"])){
 
             <ul class="nav">
                 <li class="active">
-                    <a href="homepage.html">
+                    <a href="homepage.php">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>

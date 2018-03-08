@@ -38,7 +38,7 @@
             </div>
           </div>
           <input type="submit" name="submit" value="LOGIN" class="btn btn-primary btn-block"/>
-          <!-- <a class="btn btn-primary btn-block" href="homepage.html">Login</a> -->
+          <!-- <a class="btn btn-primary btn-block" href="homepage.php">Login</a> -->
         </form>
         <?php
 
