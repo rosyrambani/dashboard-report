@@ -57,7 +57,9 @@
 
         mysqli_select_db($con,"demo");
 
-        if(isset($_POST['username'])){
+        if(isset($_POST["submit"])) {
+
+        if(!empty($_POST['username']) && !empty($_POST['password'])) {
           $uname=$_POST['username'];
           $password=$_POST['password'];
 
@@ -65,14 +67,26 @@
 
           $result=mysqli_query($con,$sql);
 
-          if(mysqli_num_rows($result)==1){
-            echo " You Have Successfully Logged in";
-            exit();
+          if(mysqli_num_rows($result)!=0){
+            // echo " You Have Successfully Logged in";
+            while($row=mysqli_fetch_assoc($result)) {
+              $dbusername=$row['User'];
+              $dbpassword=$row['Pass'];
+            }
+
+            if($uname == $dbusername && $password == $dbpassword)
+            {
+              session_start();
+              $_SESSION['sess_user']=$user;
+
+              header("Location: homepage.php");
+            }
           }
           else{
             echo "You Have Entered Incorrect Password";
-            exit();
+            
           }
+        }
         }
 
         ?>
