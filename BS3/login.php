@@ -63,7 +63,7 @@
           $uname=$_POST['username'];
           $password=$_POST['password'];
 
-          $sql="select * from loginform where user='".$uname."'AND Pass='".$password."' limit 1";
+          $sql="select * from loginform where User='".$uname."'AND Pass='".$password."' limit 1";
 
           $result=mysqli_query($con,$sql);
 
