@@ -120,7 +120,7 @@ if(!isset($_SESSION["sess_user"])){
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="login.html">
+                           <a href="logout.php">
                                Logout
                             </a>
                         </li>
